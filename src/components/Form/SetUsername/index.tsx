@@ -13,7 +13,7 @@ const FormSetUsername = ({ translate }: { translate: { submit: string } }): Reac
 		resolver: yupResolver(ValidationUsername()),
 	});
 
-	const onSubmit = () => console.log("log onSubmit NOW");
+	const onSubmit = () => console.log("log onSubmit NOW"); // eslint-disable-line
 
 	const handleFormSubmit = (e: FormEvent<HTMLFormElement>): void => {
 		e.preventDefault();
