@@ -1,0 +1,10 @@
+{
+  "Global": {
+    "title": "Food Cards",
+    "submit": "Odeslat"
+  },
+  "Index": {
+    "title": "Food Cards",
+    "description": "Co bude dnes k večeři?"
+  }
+}

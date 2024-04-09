@@ -1,21 +1,25 @@
-"use client";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { useTranslations } from "next-intl";
+import { type ReactNode } from "react";
 
 import FormSetUsername from "@/components/Form/SetUsername";
 
-export default function Home() {
+const Home = (): ReactNode => {
+	const translate = useTranslations();
 	return (
 		<main>
 			<Typography variant="h1" component="h2">
-				Food Cards
+				{translate("Global.title")}
 			</Typography>
 			<Box>
 				<Typography component="h2" variant="h5">
-					Změna uživatelského jména
+					{translate("Index.description")}
 				</Typography>
-				<FormSetUsername />
+				<FormSetUsername translate={{ submit: translate("Global.submit") }} />
 			</Box>
 		</main>
 	);
-}
+};
+
+export default Home;
