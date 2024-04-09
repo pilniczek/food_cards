@@ -1,5 +1,10 @@
-import * as yup from "yup";
+import { object, setLocale, string } from "yup";
 
-export const ValidationUsername = yup.object().shape({
-	username: yup.string().required(),
-});
+import locale from "@/components/Form/validation/locale";
+
+setLocale(locale.cs);
+
+export const ValidationUsername = () =>
+	object().shape({
+		username: string().required(),
+	});
