@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "prepare": "husky install .husky",
+    "lint": "next lint",
+    "lint-fix": "npx prettier-eslint ./**/*.* --write"
+  },
+  "lint-staged": {
+    "{*.ts,*.tsx,*.js,*.jsx,*.json,*.yml,*yaml,*md}": "npx prettier-eslint-cli --write"
   },
   "dependencies": {
     "eslint-config-prettier": "^9.1.0",
