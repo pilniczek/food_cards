@@ -2,6 +2,8 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
+import FormSetUsername from "@/components/Form/SetUsername";
+
 export default function Home() {
 	return (
 		<main>
@@ -12,6 +14,7 @@ export default function Home() {
 				<Typography component="h2" variant="h5">
 					Změna uživatelského jména
 				</Typography>
+				<FormSetUsername />
 			</Box>
 		</main>
 	);
