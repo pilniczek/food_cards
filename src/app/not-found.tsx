@@ -4,7 +4,7 @@ import { type ReactNode } from "react";
 const NotFound = (): ReactNode => {
 	return (
 		<main>
-			<Typography variant="h1" component="h2">
+			<Typography variant="h4" component="h1" textAlign="center">
 				404
 			</Typography>
 		</main>

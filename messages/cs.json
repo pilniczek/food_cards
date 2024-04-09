@@ -1,10 +1,29 @@
 {
   "Global": {
     "title": "Food Cards",
-    "submit": "Odeslat"
+    "submit": "Odeslat",
+    "settings": "Nastavení",
+    "logout": "Odhlásit",
+    "back": "Zpět",
+    "letsDraw": "Losovat"
   },
   "Index": {
     "title": "Food Cards",
     "description": "Co bude dnes k večeři?"
+  },
+  "Dashboard": {
+    "title": "Dashboard"
+  },
+  "DrawnFood": {
+    "title": "Vylosovaná jídla"
+  },
+  "Settings": {
+    "title": "Nastavení"
+  },
+  "ShoppingList": {
+    "title": "Nákupní seznam"
+  },
+  "FoodList": {
+    "title": "Seznam jídel"
   }
 }
