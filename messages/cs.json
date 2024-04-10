@@ -12,7 +12,28 @@
     "description": "Co bude dnes k večeři?"
   },
   "Dashboard": {
-    "title": "Dashboard"
+    "title": "Dashboard",
+    "functions": {
+      "drawnFood": {
+        "title": "Vylosovaná jídla",
+        "errors": {
+          "noFood": "Nejsou vylosována žádná jídla. Přejete si losovat?"
+        }
+      },
+      "shoppingList": {
+        "title": "Nákupní seznam",
+        "errors": {
+          "noFood": "Nejsou vylosována žádná jídla. Přejete si losovat a automaticky přejít na nákupní seznam?"
+        }
+      },
+      "foodList": { "title": "Seznam jídel" },
+      "LetsDraw": {
+        "title": "Losovat",
+        "errors": {
+          "noFoodList": "Není připraven seznam jídel. Vytvořte si nový seznam jídel, nebo použijte výchozí seznam, který si budete moci upravit později."
+        }
+      }
+    }
   },
   "DrawnFood": {
     "title": "Vylosovaná jídla"
@@ -24,6 +45,6 @@
     "title": "Nákupní seznam"
   },
   "FoodList": {
-    "title": "Seznam jídel"
+    "title": "Všechna jídla"
   }
 }
