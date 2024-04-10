@@ -14,4 +14,16 @@ const theme = createTheme({
 	},
 });
 
+theme!.components!.MuiCardActionArea = {
+	styleOverrides: {
+		root: {
+			fontSize: 0,
+			height: "100%",
+			justifyContent: "space-between",
+			display: "flex",
+			flexDirection: "column",
+		},
+	},
+};
+
 export default theme;
