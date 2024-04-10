@@ -9,7 +9,7 @@ const Home = (): ReactNode => {
 	const translate = useTranslations();
 	return (
 		<main>
-			<Typography variant="h1" component="h2">
+			<Typography variant="h4" component="h1" textAlign="center">
 				{translate("Global.title")}
 			</Typography>
 			<Box>
