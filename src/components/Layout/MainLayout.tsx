@@ -4,6 +4,8 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { Inter } from "next/font/google";
 import { type ReactNode } from "react";
 
+import Footer from "@/components/Layout/Footer";
+
 import theme from "../../theme";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,6 +24,7 @@ const MainLayout = ({
 					<ThemeProvider theme={theme}>
 						<CssBaseline />
 						{children}
+						<Footer />
 					</ThemeProvider>
 				</AppRouterCacheProvider>
 			</body>
