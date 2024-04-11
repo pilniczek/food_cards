@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import { type ReactNode } from "react";
 
 import Footer from "@/components/Layout/Footer";
+import { FormLocaleProvider } from "@/context/FormLocaleProvider";
 
 import theme from "../../theme";
 
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 	description: "Co bude dnes k večeři?",
 };
 
-const RootLayout = ({
+const LocaleLayout = ({
 	children,
 	params,
 }: Readonly<{
@@ -28,15 +29,17 @@ const RootLayout = ({
 		<html lang={locale}>
 			<body className={inter.className}>
 				<AppRouterCacheProvider>
-					<ThemeProvider theme={theme}>
-						<CssBaseline />
-						{children}
-						<Footer />
-					</ThemeProvider>
+					<FormLocaleProvider locale={locale}>
+						<ThemeProvider theme={theme}>
+							<CssBaseline />
+							{children}
+							<Footer />
+						</ThemeProvider>
+					</FormLocaleProvider>
 				</AppRouterCacheProvider>
 			</body>
 		</html>
 	);
 };
 
-export default RootLayout;
+export default LocaleLayout;
