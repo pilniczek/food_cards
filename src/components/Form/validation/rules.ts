@@ -1,8 +1,4 @@
-import { object, setLocale, string } from "yup";
-
-import locale from "@/components/Form/validation/locale";
-
-setLocale(locale.cs);
+import { object, string } from "yup";
 
 export const ValidationUsername = () =>
 	object().shape({
