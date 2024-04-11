@@ -1,8 +1,8 @@
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { getTranslations } from "next-intl/server";
 import { type ReactNode } from "react";
 
 import Footer from "@/components/Layout/Footer";
@@ -12,10 +12,14 @@ import theme from "../../theme";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-	title: "Food Cards",
-	description: "Co bude dnes k večeři?",
-};
+export async function generateMetadata({ params: { locale } }: { params: { locale: "cs" } }) {
+	const translation = await getTranslations({ locale, namespace: "Metadata" });
+
+	return {
+		title: translation("title"),
+		description: translation("description"),
+	};
+}
 
 const LocaleLayout = ({
 	children,
