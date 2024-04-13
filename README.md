@@ -54,3 +54,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 - `test #issueId: message`
 - `ci #issueId: message`
 - `npm #issueId: message`
+
+## OAuth
+
+- [Google setup](https://console.cloud.google.com/apis/credentials?authuser=0&organizationId=0&project=food-cards-420011)
+- [Github setup](https://github.com/settings/applications/2544326)
+- [Supabase setup](https://supabase.com/dashboard/project/zygclhlkpilpvnvrgcse/auth/providers)
+- [Vercel env](https://vercel.com/tom-pilnajs-projects/food-cards-51hr/settings/environment-variables)
+  
