@@ -2,6 +2,7 @@
   "Global": {
     "title": "Food Cards",
     "submit": "Odeslat",
+    "submitGoogle": "Přihlásit pomocí Google",
     "settings": "Nastavení",
     "logout": "Odhlásit",
     "back": "Zpět",
