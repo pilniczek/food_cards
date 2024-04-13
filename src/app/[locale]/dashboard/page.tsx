@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import { useTranslations } from "next-intl";
 import { type ReactNode } from "react";
 
+import Logout from "@/components/Button/LogOut";
 import ActionCardLink from "@/components/Card/ActionCardLink";
 import Header from "@/components/Layout/Header";
 
@@ -10,7 +11,9 @@ const Dashboard = (): ReactNode => {
 	const translate = useTranslations("Dashboard");
 	return (
 		<>
-			<Header />
+			<Header>
+				<Logout />
+			</Header>
 			<main>
 				<Typography variant="h4" component="h1" textAlign="center">
 					{translate("title")}
