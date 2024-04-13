@@ -19,9 +19,6 @@ const Settings = (): ReactNode => {
 					{translate("Settings.title")}
 				</Typography>
 				<Box>
-					<Typography component="h2" variant="h5">
-						{translate("Index.description")}
-					</Typography>
 					<FormSetUsername translate={{ submit: translate("Global.submit") }} />
 				</Box>
 			</main>
