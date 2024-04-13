@@ -6,7 +6,7 @@ import BackButton from "@/components/Button/Back";
 import Header from "@/components/Layout/Header";
 
 const ShoppingList = (): ReactNode => {
-	const translate = useTranslations();
+	const translate = useTranslations("ShoppingList");
 	return (
 		<>
 			<Header>
@@ -14,7 +14,7 @@ const ShoppingList = (): ReactNode => {
 			</Header>
 			<main>
 				<Typography variant="h4" component="h1" textAlign="center">
-					{translate("ShoppingList.title")}
+					{translate("title")}
 				</Typography>
 			</main>
 		</>

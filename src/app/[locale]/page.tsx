@@ -5,13 +5,13 @@ import { type ReactNode } from "react";
 import Header from "@/components/Layout/Header";
 
 const Home = (): ReactNode => {
-	const translate = useTranslations();
+	const translate = useTranslations("Index");
 	return (
 		<>
 			<Header />
 			<main>
 				<Typography variant="h4" component="h1" textAlign="center">
-					{translate("Index.h1")}
+					{translate("h1")}
 				</Typography>
 			</main>
 		</>

@@ -6,7 +6,7 @@ import BackButton from "@/components/Button/Back";
 import Header from "@/components/Layout/Header";
 
 const FoodList = (): ReactNode => {
-	const translate = useTranslations();
+	const translate = useTranslations("FoodList");
 	return (
 		<>
 			<Header>
@@ -14,7 +14,7 @@ const FoodList = (): ReactNode => {
 			</Header>
 			<main>
 				<Typography variant="h4" component="h1" textAlign="center">
-					{translate("FoodList.title")}
+					{translate("title")}
 				</Typography>
 			</main>
 		</>
