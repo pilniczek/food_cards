@@ -3,7 +3,7 @@ import { type ReactNode } from "react";
 
 const SubmitButton = ({ children, ...rest }: LoadingButtonProps): ReactNode => {
 	return (
-		<LoadingButton {...rest} type="submit" variant="contained">
+		<LoadingButton variant="contained" {...rest} type="submit">
 			{children}
 		</LoadingButton>
 	);
