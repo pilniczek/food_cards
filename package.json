@@ -8,7 +8,8 @@
     "start": "next start",
     "prepare": "husky install .husky",
     "lint": "next lint",
-    "lint-fix": "npx prettier-eslint ./**/*.* --write"
+    "lint-fix": "npx prettier-eslint ./**/*.* --write",
+    "generate-types": "npx supabase gen types typescript --project-id zygclhlkpilpvnvrgcse --schema public > src/types/supabase.ts"
   },
   "lint-staged": {
     "{*.ts,*.tsx,*.js,*.jsx,*.json,*.yml,*yaml,*md}": "npx prettier-eslint-cli --write"
@@ -21,6 +22,7 @@
     "@mui/icons-material": "^5.15.15",
     "@mui/lab": "^5.0.0-alpha.170",
     "@mui/material-nextjs": "^5.15.11",
+    "@supabase/supabase-js": "^2.42.3",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard-with-typescript": "^43.0.1",
     "eslint-plugin-import": "^2.29.1",
@@ -41,6 +43,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.51.2",
+    "supabase": "^1.153.4",
     "utility-types": "^3.11.0",
     "yup": "^1.4.0"
   },
