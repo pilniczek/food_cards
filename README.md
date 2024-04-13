@@ -20,15 +20,11 @@ Lo-fi prototype [HERE](https://www.figma.com/community/file/1359375869618657842)
 
 First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- `npm i`
+- `npm run prepare` (husky, pre-commit hooks)
+- `npx supabase login` 
+- `npm run generate-types` ([Supabase generating types](https://supabase.com/docs/guides/api/rest/generating-types))
+- `npm run dev`
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
