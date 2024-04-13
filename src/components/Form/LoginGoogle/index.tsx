@@ -2,18 +2,21 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Image from "next/image";
+import { useLocale } from "next-intl";
 import { type FormEvent, type ReactNode } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 import SubmitButton from "@/components/Form/SubmitButton";
+import getURL from "@/utils/getUrl";
+import signIn from "@/utils/signIn";
 
 const LoginGoogle = ({ translate }: { translate: { submit: string } }): ReactNode => {
 	const methods = useForm();
+	const locale = useLocale();
 
-	const onSubmit = () => console.log("log onSubmit NOW"); // eslint-disable-line
 	const handleFormSubmit = (e: FormEvent<HTMLFormElement>): void => {
 		e.preventDefault();
-		methods.handleSubmit(onSubmit)();
+		methods.handleSubmit(() => signIn(`${getURL()}${locale}/dashboard`, "google"))();
 	};
 
 	return (
