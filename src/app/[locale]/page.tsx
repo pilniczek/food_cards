@@ -1,19 +1,23 @@
+import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useTranslations } from "next-intl";
 import { type ReactNode } from "react";
 
+import LoginGoogle from "@/components/Form/LoginGoogle";
 import Header from "@/components/Layout/Header";
 
 const Home = (): ReactNode => {
-	const translate = useTranslations("Index");
+	const translate = useTranslations();
 	return (
 		<>
 			<Header />
-			<main>
+			<Stack component="main" spacing={3}>
 				<Typography variant="h4" component="h1" textAlign="center">
-					{translate("h1")}
+					{translate("Index.h1")}
 				</Typography>
-			</main>
+
+				<LoginGoogle translate={{ submit: translate("Global.submitGoogle") }} />
+			</Stack>
 		</>
 	);
 };
