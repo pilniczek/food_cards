@@ -6,6 +6,7 @@ import { getTranslations } from "next-intl/server";
 import { type ReactNode } from "react";
 
 import Footer from "@/components/Layout/Footer";
+import { AuthProvider } from "@/context/AuthProvider";
 import { FormLocaleProvider } from "@/context/FormLocaleProvider";
 
 import theme from "../../theme";
@@ -33,13 +34,15 @@ const LocaleLayout = ({
 		<html lang={locale}>
 			<body className={inter.className}>
 				<AppRouterCacheProvider>
-					<FormLocaleProvider locale={locale}>
-						<ThemeProvider theme={theme}>
-							<CssBaseline />
-							{children}
-							<Footer />
-						</ThemeProvider>
-					</FormLocaleProvider>
+					<AuthProvider>
+						<FormLocaleProvider locale={locale}>
+							<ThemeProvider theme={theme}>
+								<CssBaseline />
+								{children}
+								<Footer />
+							</ThemeProvider>
+						</FormLocaleProvider>
+					</AuthProvider>
 				</AppRouterCacheProvider>
 			</body>
 		</html>
