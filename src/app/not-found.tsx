@@ -3,11 +3,15 @@ import { type ReactNode } from "react";
 
 const NotFound = (): ReactNode => {
 	return (
-		<main>
-			<Typography variant="h4" component="h1" textAlign="center">
-				404
-			</Typography>
-		</main>
+		<html lang="cs">
+			<body>
+				<main>
+					<Typography variant="h4" component="h1" textAlign="center">
+						404
+					</Typography>
+				</main>
+			</body>
+		</html>
 	);
 };
 
