@@ -37,6 +37,11 @@
       }
     }
   },
+  "Auth": {
+    "title": "Nejste přihlášen/a",
+    "content": "Prosím přihlaste se.",
+    "action": "Přihlásit"
+  },
   "DrawnFood": {
     "title": "Vylosovaná jídla"
   },
