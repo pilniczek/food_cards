@@ -1,8 +1,9 @@
 "use client";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Button, { type ButtonProps } from "@mui/material/Button";
-import { useRouter } from "next/navigation";
 import { type ReactNode } from "react";
+
+import { useRouter } from "@/navigation";
 
 const BackButton = ({ children, ...rest }: ButtonProps): ReactNode => {
 	const router = useRouter();
