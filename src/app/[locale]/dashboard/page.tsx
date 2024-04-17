@@ -1,13 +1,20 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useTranslations } from "next-intl";
-import { type ReactNode } from "react";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 import Logout from "@/components/Button/LogOut";
 import ActionCardLink from "@/components/Card/ActionCardLink";
 import Header from "@/components/Layout/Header";
+import { locales } from "@/navigation";
+import { LocalesEnum } from "@/types/locale";
 
-const Dashboard = (): ReactNode => {
+export function generateStaticParams() {
+	return locales.map((locale) => ({ locale }));
+}
+
+const Dashboard = ({ params: { locale } }: { params: { locale: LocalesEnum } }) => {
+	unstable_setRequestLocale(locale);
 	const translate = useTranslations("Dashboard");
 	return (
 		<>

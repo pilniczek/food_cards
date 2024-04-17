@@ -3,18 +3,24 @@ import { ThemeProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { Inter } from "next/font/google";
 import { useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { type ReactNode } from "react";
 
 import Footer from "@/components/Layout/Footer";
 import { AuthProvider } from "@/context/AuthProvider";
 import { FormLocaleProvider } from "@/context/FormLocaleProvider";
+import { locales } from "@/navigation";
+import { LocalesEnum } from "@/types/locale";
 
 import theme from "../../theme";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: "cs" } }) {
+export async function generateMetadata({
+	params: { locale },
+}: {
+	params: { locale: LocalesEnum };
+}) {
 	const translation = await getTranslations({ locale, namespace: "Metadata" });
 
 	return {
@@ -23,14 +29,19 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 	};
 }
 
+export function generateStaticParams() {
+	return locales.map((locale) => ({ locale }));
+}
+
 const LocaleLayout = ({
 	children,
 	params,
 }: Readonly<{
 	children: ReactNode;
-	params: { locale: "cs" };
-}>): ReactNode => {
+	params: { locale: LocalesEnum };
+}>) => {
 	const { locale } = params;
+	unstable_setRequestLocale(locale);
 	const translate = useTranslations("Auth");
 	return (
 		<html lang={locale}>
