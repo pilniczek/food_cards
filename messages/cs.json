@@ -7,7 +7,11 @@
     "settings": "Nastavení",
     "logout": "Odhlásit",
     "back": "Zpět",
-    "letsDraw": "Losovat"
+    "letsDraw": "Losovat",
+    "typ": "Typ",
+    "ingredients": "ingredience",
+    "delete": "Smazat",
+    "save": "Uložit"
   },
   "Index": {
     "title": "Food Cards",
