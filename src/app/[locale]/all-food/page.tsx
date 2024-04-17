@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 import BackButton from "@/components/Button/Back";
+import FoodList from "@/components/FoodList";
 import Header from "@/components/Layout/Header";
 import { locales } from "@/navigation";
 import { LocalesEnum } from "@/types/locale";
@@ -11,7 +12,7 @@ export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));
 }
 
-const FoodList = ({ params: { locale } }: { params: { locale: LocalesEnum } }) => {
+const AllFood = ({ params: { locale } }: { params: { locale: LocalesEnum } }) => {
 	unstable_setRequestLocale(locale);
 	const translate = useTranslations("FoodList");
 	return (
@@ -28,4 +29,4 @@ const FoodList = ({ params: { locale } }: { params: { locale: LocalesEnum } }) =
 	);
 };
 
-export default FoodList;
+export default AllFood;
