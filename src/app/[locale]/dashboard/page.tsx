@@ -45,7 +45,7 @@ const Dashboard = ({ params: { locale } }: { params: { locale: LocalesEnum } }) 
 				</Stack>
 				<Stack flexDirection="row" width="100%" justifyContent="center">
 					<ActionCardLink
-						route="/food-list"
+						route="/all-food"
 						content={translate("functions.foodList.title")}
 						media={{
 							src: "/images/food.webp",
