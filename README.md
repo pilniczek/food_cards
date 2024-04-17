@@ -16,6 +16,10 @@ Lo-fi prototype [HERE](https://www.figma.com/community/file/1359375869618657842)
 
 [Manage preview](https://vercel.com/tom-pilnajs-projects/food-cards-51hr)
 
+## Solution
+
+<img width="1888" alt="food_cards" src="https://github.com/pilniczek/food_cards/assets/4343111/6fc6e148-6da5-494a-9ca4-2dde20f0284e">
+
 ## Getting Started
 
 First, run the development server:
