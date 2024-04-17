@@ -1,13 +1,20 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useTranslations } from "next-intl";
-import { type ReactNode } from "react";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 import LoginGithub from "@/components/Form/LoginGithub";
 import LoginGoogle from "@/components/Form/LoginGoogle";
 import Header from "@/components/Layout/Header";
+import { locales } from "@/navigation";
+import { LocalesEnum } from "@/types/locale";
 
-const Home = (): ReactNode => {
+export function generateStaticParams() {
+	return locales.map((locale) => ({ locale }));
+}
+
+const Home = ({ params: { locale } }: { params: { locale: LocalesEnum } }) => {
+	unstable_setRequestLocale(locale);
 	const translate = useTranslations();
 	return (
 		<>
