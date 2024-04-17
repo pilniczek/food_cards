@@ -9,7 +9,92 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      food: {
+        Row: {
+          content: string
+          id: string
+          name: string
+          type: string | null
+        }
+        Insert: {
+          content: string
+          id?: string
+          name: string
+          type?: string | null
+        }
+        Update: {
+          content?: string
+          id?: string
+          name?: string
+          type?: string | null
+        }
+        Relationships: []
+      }
+      user_food: {
+        Row: {
+          food_id: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          food_id: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          food_id?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "public_user_food_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "food"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "public_user_food_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_profiles: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          email: string
+          id: string
+          image_url: string | null
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          email: string
+          id?: string
+          image_url?: string | null
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          email?: string
+          id?: string
+          image_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "public_User_profiles_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
