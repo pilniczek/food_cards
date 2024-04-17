@@ -6,11 +6,12 @@ import { FormProvider, useForm } from "react-hook-form";
 
 import SubmitButton from "@/components/Form/SubmitButton";
 import TextInput from "@/components/Form/TextInput";
-import { ValidationUsername } from "@/components/Form/validation/rules";
+
+import { validationUsername } from "./validation";
 
 const FormSetUsername = ({ translate }: { translate: { submit: string } }): ReactNode => {
 	const methods = useForm({
-		resolver: yupResolver(ValidationUsername()),
+		resolver: yupResolver(validationUsername()),
 	});
 
 	const onSubmit = () => console.log("log onSubmit NOW"); // eslint-disable-line

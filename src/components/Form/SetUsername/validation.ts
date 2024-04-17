@@ -1,6 +1,6 @@
 import { object, string } from "yup";
 
-export const ValidationUsername = () =>
+export const validationUsername = () =>
 	object().shape({
 		username: string().required(),
 	});
