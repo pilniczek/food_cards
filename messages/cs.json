@@ -56,8 +56,9 @@
   "ShoppingList": {
     "title": "Nákupní seznam"
   },
-  "FoodList": {
-    "title": "Všechna jídla"
+  "AllFood": {
+    "title": "Všechna jídla",
+    "noFood": "Žádná jídla"
   },
   "Metadata": {
     "title": "Food Cards",
