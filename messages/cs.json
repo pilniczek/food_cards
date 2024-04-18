@@ -60,6 +60,12 @@
     "title": "Všechna jídla",
     "noFood": "Žádná jídla"
   },
+  "CreateFood": {
+    "title": "Vytvořit jídlo"
+  },
+  "EditFood": {
+    "title": "Upravit jídlo"
+  },
   "Metadata": {
     "title": "Food Cards",
     "description": "Co bude dnes k večeři?"

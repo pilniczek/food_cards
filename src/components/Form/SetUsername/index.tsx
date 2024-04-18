@@ -1,38 +1,33 @@
 "use client";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Stack from "@mui/material/Stack";
-import { type FormEvent, type ReactNode } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { type ReactNode } from "react";
 
+import FormProvider from "@/components/Form/Provider";
 import SubmitButton from "@/components/Form/SubmitButton";
 import TextInput from "@/components/Form/TextInput";
 
 import { validationUsername } from "./validation";
 
 const FormSetUsername = ({ translate }: { translate: { submit: string } }): ReactNode => {
-	const methods = useForm({
+	const methodsParams = {
 		resolver: yupResolver(validationUsername()),
-	});
+	};
 
-	const onSubmit = () => console.log("log onSubmit NOW"); // eslint-disable-line
-
-	const handleFormSubmit = (e: FormEvent<HTMLFormElement>): void => {
-		e.preventDefault();
-		methods.handleSubmit(onSubmit)();
+	const onSubmit = () => {
+		console.log("log onSubmit NOW"); // eslint-disable-line
 	};
 
 	return (
-		<FormProvider {...methods}>
-			<form onSubmit={handleFormSubmit}>
-				<Stack spacing={4}>
-					<Stack spacing={2}>
-						<TextInput name="username" label="username" />
-					</Stack>
-					<Stack spacing={1}>
-						<SubmitButton>{translate.submit}</SubmitButton>
-					</Stack>
+		<FormProvider methodsParams={methodsParams} onSubmit={onSubmit}>
+			<Stack spacing={4}>
+				<Stack spacing={2}>
+					<TextInput name="username" label="username" />
 				</Stack>
-			</form>
+				<Stack spacing={1}>
+					<SubmitButton>{translate.submit}</SubmitButton>
+				</Stack>
+			</Stack>
 		</FormProvider>
 	);
 };

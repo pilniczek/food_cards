@@ -1,8 +1,9 @@
 import { object, string } from "yup";
 
+import { coreFood } from "../validation";
+
 export const validationFood = () =>
 	object().shape({
-		name: string().required(),
-		type: string(),
-		content: string().required(),
+		id: string().required(),
+		...coreFood,
 	});

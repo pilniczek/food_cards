@@ -38,7 +38,10 @@ const FoodList = ({ translate: { noFood } }: { translate: { noFood: string } }) 
 			)}
 			{foodList != null &&
 				foodList?.map((item) => (
-					<Link href={`/all-food/food?name=${item.name}`} key={item.name}>
+					<Link
+						href={`/all-food/food/edit?id=${item.id}&name=${item.name}&type=${item.type}&content=${item.content}&`}
+						key={item.id}
+					>
 						{item.name}
 					</Link>
 				))}
