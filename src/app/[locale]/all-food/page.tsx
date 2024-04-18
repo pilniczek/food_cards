@@ -16,7 +16,7 @@ export function generateStaticParams() {
 
 const AllFood = ({ params: { locale } }: { params: { locale: LocalesEnum } }) => {
 	unstable_setRequestLocale(locale);
-	const translate = useTranslations("AllFood");
+	const translate = useTranslations();
 	return (
 		<>
 			<Header>
@@ -24,9 +24,15 @@ const AllFood = ({ params: { locale } }: { params: { locale: LocalesEnum } }) =>
 			</Header>
 			<main>
 				<Typography variant="h4" component="h1" textAlign="center">
-					{translate("title")}
+					{translate("AllFood.title")}
 				</Typography>
-				<FoodList translate={{ noFood: translate("noFood") }} />
+				<FoodList
+					translate={{
+						noFood: translate("AllFood.noFood"),
+						remove: translate("Global.remove"),
+						edit: translate("Global.edit"),
+					}}
+				/>
 				<Link href="/all-food/food/create" passHref>
 					<Button variant="contained">create food</Button>
 				</Link>
