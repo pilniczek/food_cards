@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 import BackButton from "@/components/Button/Back";
-import EditFood from "@/components/Form/EditFood";
+import CreateFood from "@/components/Form/Food/Create";
 import Header from "@/components/Layout/Header";
 import { locales } from "@/navigation";
 import { LocalesEnum } from "@/types/locale";
@@ -12,9 +12,9 @@ export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));
 }
 
-const Food = ({ params: { locale } }: { params: { locale: LocalesEnum } }) => {
+const Create = ({ params: { locale } }: { params: { locale: LocalesEnum } }) => {
 	unstable_setRequestLocale(locale);
-	const translate = useTranslations("Global");
+	const translate = useTranslations();
 
 	return (
 		<>
@@ -23,12 +23,12 @@ const Food = ({ params: { locale } }: { params: { locale: LocalesEnum } }) => {
 			</Header>
 			<main>
 				<Typography variant="h4" component="h1" textAlign="center">
-					name
+					{translate("CreateFood.title")}
 				</Typography>
-				<EditFood translate={{ submit: translate("save") }} />
+				<CreateFood translate={{ submit: translate("Global.save") }} />
 			</main>
 		</>
 	);
 };
 
-export default Food;
+export default Create;

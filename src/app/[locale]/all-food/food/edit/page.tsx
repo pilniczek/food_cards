@@ -1,22 +1,22 @@
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
+import { Suspense } from "react";
 
 import BackButton from "@/components/Button/Back";
-import FoodList from "@/components/FoodList";
+import EditFood from "@/components/Form/Food/Edit";
 import Header from "@/components/Layout/Header";
 import { locales } from "@/navigation";
-import { Link } from "@/navigation";
 import { LocalesEnum } from "@/types/locale";
 
 export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));
 }
 
-const AllFood = ({ params: { locale } }: { params: { locale: LocalesEnum } }) => {
+const Edit = ({ params: { locale } }: { params: { locale: LocalesEnum } }) => {
 	unstable_setRequestLocale(locale);
-	const translate = useTranslations("AllFood");
+	const translate = useTranslations();
+
 	return (
 		<>
 			<Header>
@@ -24,15 +24,14 @@ const AllFood = ({ params: { locale } }: { params: { locale: LocalesEnum } }) =>
 			</Header>
 			<main>
 				<Typography variant="h4" component="h1" textAlign="center">
-					{translate("title")}
+					{translate("EditFood.title")}
 				</Typography>
-				<FoodList translate={{ noFood: translate("noFood") }} />
-				<Link href="/all-food/food/create" passHref>
-					<Button variant="contained">create food</Button>
-				</Link>
+				<Suspense>
+					<EditFood translate={{ submit: translate("Global.save") }} />
+				</Suspense>
 			</main>
 		</>
 	);
 };
 
-export default AllFood;
+export default Edit;
