@@ -10,8 +10,9 @@
     "letsDraw": "Losovat",
     "typ": "Typ",
     "ingredients": "ingredience",
-    "delete": "Smazat",
-    "save": "Uložit"
+    "remove": "Smazat",
+    "save": "Uložit",
+    "edit": "Upravit"
   },
   "Index": {
     "title": "Food Cards",

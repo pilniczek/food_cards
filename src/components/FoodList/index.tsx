@@ -3,12 +3,16 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useEffect, useReducer } from "react";
 
-import { Link } from "@/navigation";
+import FoodCardSmall from "@/components/FoodCardSmall";
 import supabase from "@/supabase";
 
 import { initialState, reducer } from "./reducer";
 
-const FoodList = ({ translate: { noFood } }: { translate: { noFood: string } }) => {
+const FoodList = ({
+	translate: { noFood, edit, remove },
+}: {
+	translate: { noFood: string; edit: string; remove: string };
+}) => {
 	const [{ foodList, foodListError }, dispatch] = useReducer(reducer, initialState);
 
 	useEffect(() => {
@@ -30,7 +34,7 @@ const FoodList = ({ translate: { noFood } }: { translate: { noFood: string } }) 
 	}, []);
 
 	return (
-		<Stack>
+		<Stack spacing={2} sx={{ pb: 2 }}>
 			{foodListError != null && (
 				<Typography variant="body1" component="p">
 					{foodListError.message}
@@ -38,12 +42,7 @@ const FoodList = ({ translate: { noFood } }: { translate: { noFood: string } }) 
 			)}
 			{foodList != null &&
 				foodList?.map((item) => (
-					<Link
-						href={`/all-food/food/edit?id=${item.id}&name=${item.name}&type=${item.type}&content=${item.content}&`}
-						key={item.id}
-					>
-						{item.name}
-					</Link>
+					<FoodCardSmall key={item.id} item={item} translate={{ edit, remove }} />
 				))}
 			{foodList?.length === 0 && (
 				<Typography variant="body1" component="p">
