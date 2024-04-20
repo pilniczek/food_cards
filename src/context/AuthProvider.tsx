@@ -3,7 +3,7 @@ import { createContext, type ReactElement, useContext, useEffect, useState } fro
 
 import DialogBottom from "@/components/DialogBottom";
 import { usePathname, useRouter } from "@/navigation";
-import getSession from "@/utils/getSession";
+import { useSession } from "@/query-hooks/useSession";
 
 export const AuthContext = createContext({});
 
@@ -25,15 +25,15 @@ export const AuthProvider = ({ children, translate: { title, content, action } }
 	const [open, setOpen] = useState(false);
 	const pathName = usePathname();
 
+	const { data, isLoading } = useSession(); // TODO error
+
 	useEffect(() => {
-		getSession().then((response) => {
-			if (response == null && pathName !== "/") {
-				setOpen(true);
-			} else {
-				setOpen(false);
-			}
-		});
-	}, [pathName]);
+		if (data == null && pathName !== "/" && isLoading === false) {
+			setOpen(true);
+		} else {
+			setOpen(false);
+		}
+	}, [data, isLoading, pathName]);
 
 	return (
 		<AuthContext.Provider value={{}}>
