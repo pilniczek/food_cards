@@ -7,15 +7,12 @@ import { useState } from "react";
 import { Link } from "@/navigation";
 import supabase from "@/supabase";
 
-import { Error } from "./types";
+import { Error, FoodCardSmallProps } from "./types";
 
 const FoodCardSmall = ({
 	item: { id, name, type, content },
 	translate: { edit, remove },
-}: {
-	item: { id: string; name: string; type: string | null; content: string };
-	translate: { edit: string; remove: string };
-}) => {
+}: FoodCardSmallProps) => {
 	const [error, setError] = useState<Error | undefined>();
 
 	const handleRemove = async () => {
