@@ -24,6 +24,7 @@
     "@mui/material-nextjs": "^5.15.11",
     "@supabase/supabase-js": "^2.42.3",
     "@tanstack/react-query": "^5.29.2",
+    "@tanstack/react-query-devtools": "^5.29.2",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard-with-typescript": "^43.0.1",
     "eslint-plugin-import": "^2.29.1",
