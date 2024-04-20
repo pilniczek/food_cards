@@ -7,6 +7,7 @@ import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { type ReactNode } from "react";
 
 import Footer from "@/components/Layout/Footer";
+import { ApiProvider } from "@/context/ApiProvider";
 import { AuthProvider } from "@/context/AuthProvider";
 import { FormLocaleProvider } from "@/context/FormLocaleProvider";
 import { locales } from "@/navigation";
@@ -47,21 +48,23 @@ const LocaleLayout = ({
 		<html lang={locale}>
 			<body className={inter.className}>
 				<AppRouterCacheProvider>
-					<AuthProvider
-						translate={{
-							title: translate("title"),
-							content: translate("content"),
-							action: translate("action"),
-						}}
-					>
-						<FormLocaleProvider locale={locale}>
-							<ThemeProvider theme={theme}>
-								<CssBaseline />
-								{children}
-								<Footer />
-							</ThemeProvider>
-						</FormLocaleProvider>
-					</AuthProvider>
+					<ApiProvider>
+						<AuthProvider
+							translate={{
+								title: translate("title"),
+								content: translate("content"),
+								action: translate("action"),
+							}}
+						>
+							<FormLocaleProvider locale={locale}>
+								<ThemeProvider theme={theme}>
+									<CssBaseline />
+									{children}
+									<Footer />
+								</ThemeProvider>
+							</FormLocaleProvider>
+						</AuthProvider>
+					</ApiProvider>
 				</AppRouterCacheProvider>
 			</body>
 		</html>
