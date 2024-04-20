@@ -1,50 +1,56 @@
 "use client";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { useEffect, useReducer } from "react";
 
 import FoodCardSmall from "@/components/FoodCardSmall";
-import supabase from "@/supabase";
-
-import { initialState, reducer } from "./reducer";
+import { useFoodList } from "@/query-hooks/useFoodList";
 
 const FoodList = ({
 	translate: { noFood, edit, remove },
 }: {
 	translate: { noFood: string; edit: string; remove: string };
 }) => {
-	const [{ foodList, foodListError }, dispatch] = useReducer(reducer, initialState);
+	const { data, isLoading, isError: isQueryError, error: queryError } = useFoodList();
 
-	useEffect(() => {
-		const fetchFoodList = async () => {
-			const { data, error } = await supabase.from("food").select("*");
-			if (error != null) {
-				dispatch({
-					type: "SET_ERROR",
-					error,
-				});
-			} else {
-				dispatch({
-					type: "SET_DATA",
-					data,
-				});
-			}
-		};
-		fetchFoodList();
-	}, []);
+	const {
+		data: supabaseData,
+		error: supabaseError,
+		status: supabaseStatus,
+	} = data ?? {
+		data: [],
+	};
+
+	if (isLoading) {
+		return <div>Loading...</div>;
+	}
+
+	if (isQueryError) {
+		return (
+			<Stack spacing={2} sx={{ pb: 2 }}>
+				<Typography variant="body1" component="p">
+					{queryError?.message}
+				</Typography>
+			</Stack>
+		);
+	}
+
+	if (supabaseError != null || supabaseStatus === 404) {
+		return (
+			<Stack spacing={2} sx={{ pb: 2 }}>
+				<Typography variant="body1" component="p">
+					{supabaseError?.message}
+				</Typography>
+			</Stack>
+		);
+	}
 
 	return (
 		<Stack spacing={2} sx={{ pb: 2 }}>
-			{foodListError != null && (
-				<Typography variant="body1" component="p">
-					{foodListError.message}
-				</Typography>
-			)}
-			{foodList != null &&
-				foodList?.map((item) => (
+			{supabaseData != null &&
+				supabaseData.map((item) => (
 					<FoodCardSmall key={item.id} item={item} translate={{ edit, remove }} />
 				))}
-			{foodList?.length === 0 && (
+			{supabaseData.length === 0 && (
 				<Typography variant="body1" component="p">
 					{noFood}
 				</Typography>
