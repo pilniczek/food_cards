@@ -6,16 +6,16 @@ import { ReactNode } from "react";
 import SubmitButton from "@/components/Form/SubmitButton";
 import TextInput from "@/components/Form/TextInput";
 
-import { type Error } from "./types";
-
 const EditFood = ({
 	children,
 	translate,
 	error,
+	isLoading,
 }: {
 	children?: ReactNode;
 	translate: { submit: string };
-	error: Error;
+	error: string | undefined;
+	isLoading: boolean;
 }) => {
 	return (
 		<>
@@ -27,10 +27,10 @@ const EditFood = ({
 			</Stack>
 			{error != null && (
 				<Typography variant="body1" component="p">
-					{error.message}
+					{error}
 				</Typography>
 			)}
-			<SubmitButton>{translate.submit}</SubmitButton>
+			<SubmitButton loading={isLoading}>{translate.submit}</SubmitButton>
 		</>
 	);
 };
