@@ -14,19 +14,74 @@ export type Database = {
           content: string
           id: string
           name: string
-          type: string | null
+          type: string
         }
         Insert: {
-          content: string
+          content?: string
           id?: string
-          name: string
-          type?: string | null
+          name?: string
+          type?: string
         }
         Update: {
           content?: string
           id?: string
           name?: string
-          type?: string | null
+          type?: string
+        }
+        Relationships: []
+      }
+      food_ingredients: {
+        Row: {
+          food_id: string
+          id: string
+          ingredient_id: string | null
+        }
+        Insert: {
+          food_id: string
+          id?: string
+          ingredient_id?: string | null
+        }
+        Update: {
+          food_id?: string
+          id?: string
+          ingredient_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "public_food_ingredients_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "food"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "public_food_ingredients_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "food_with_ingredients"
+            referencedColumns: ["food_id"]
+          },
+          {
+            foreignKeyName: "public_food_ingredients_ingredient_id_fkey"
+            columns: ["ingredient_id"]
+            isOneToOne: false
+            referencedRelation: "ingredients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ingredients: {
+        Row: {
+          id: string
+          name: string
+        }
+        Insert: {
+          id?: string
+          name?: string
+        }
+        Update: {
+          id?: string
+          name?: string
         }
         Relationships: []
       }
@@ -53,6 +108,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "food"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "public_user_food_food_id_fkey"
+            columns: ["food_id"]
+            isOneToOne: false
+            referencedRelation: "food_with_ingredients"
+            referencedColumns: ["food_id"]
           },
           {
             foreignKeyName: "public_user_food_user_id_fkey"
@@ -97,7 +159,16 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      food_with_ingredients: {
+        Row: {
+          food_content: string | null
+          food_id: string | null
+          food_name: string | null
+          food_type: string | null
+          ingredients: Json[] | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
