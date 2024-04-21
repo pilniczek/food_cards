@@ -1,21 +1,16 @@
 "use client";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
 
 import HiddenIdInput from "@/components/Form/HiddenIdInput";
 import FormProvider from "@/components/Form/Provider";
-import { useRouter } from "@/navigation";
-import supabase from "@/supabase";
+import useEditFood from "@/query-hooks/useEditFood";
+import { type Data } from "@/types/editFood";
 
 import Form from "../";
-import { type Error } from "../types";
-import { type Data } from "./types";
 import { validationFood } from "./validation";
 
 const EditFood = ({ translate }: { translate: { submit: string } }) => {
-	const router = useRouter();
-	const [error, setError] = useState<Error | undefined>();
 	const searchParams = useSearchParams();
 
 	const methodsParams = {
@@ -28,28 +23,33 @@ const EditFood = ({ translate }: { translate: { submit: string } }) => {
 		resolver: yupResolver(validationFood()),
 	};
 
-	const handleUpdate = async (formData: Data) => {
-		if (formData.id != null) {
-			const { error, status } = await supabase
-				.from("food")
-				.update(formData)
-				.eq("id", formData.id)
-				.select();
-			if (status === 404) {
-				setError({ message: "endpoint not found" });
-			} else if (error != null) {
-				setError(error);
-			} else {
-				router.back();
-			}
-		} else {
-			setError({ message: "missing food id" });
-		}
+	const {
+		mutate,
+		data,
+		isError: isQueryError,
+		error: queryError,
+		isPending: isQueryPending,
+	} = useEditFood();
+
+	const { error: supabaseError, status: supabaseStatus } = data ?? {};
+
+	const handleUpdate = (formData: Data) => {
+		mutate(formData);
 	};
 
 	return (
 		<FormProvider methodsParams={methodsParams} onSubmit={handleUpdate}>
-			<Form translate={translate} error={error}>
+			<Form
+				translate={translate}
+				error={
+					isQueryError
+						? queryError?.message
+						: supabaseError != null || supabaseStatus === 404
+							? supabaseError?.message
+							: undefined
+				}
+				isLoading={isQueryPending}
+			>
 				<HiddenIdInput name="id" label="id" />
 			</Form>
 		</FormProvider>
