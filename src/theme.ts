@@ -51,4 +51,36 @@ theme!.components!.MuiButton = {
 	],
 };
 
+declare module "@mui/material/Chip" {
+	interface ChipPropsVariantOverrides {
+		wide: true;
+	}
+}
+
+theme!.components!.MuiChip = {
+	variants: [
+		{
+			props: { variant: "wide" },
+			style: {
+				width: "100%",
+				justifyContent: "space-between",
+				borderRadius: 8,
+				height: 36,
+				fontSize: 16,
+				".MuiChip-deleteIcon": { fontSize: 24 },
+			},
+		},
+	],
+};
+
+theme!.components!.MuiAutocomplete = {
+	styleOverrides: {
+		root: {
+			"&.MuiAutocomplete-hasClearIcon .MuiInputBase-root": {
+				paddingRight: theme.spacing(7),
+			},
+		},
+	},
+};
+
 export default theme;
