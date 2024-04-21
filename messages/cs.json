@@ -34,11 +34,11 @@
           "noFood": "Nejsou vylosována žádná jídla. Přejete si losovat a automaticky přejít na nákupní seznam?"
         }
       },
-      "foodList": { "title": "Seznam jídel" },
+      "foodList": { "title": "Všechna jídla" },
       "LetsDraw": {
         "title": "Losovat",
         "errors": {
-          "noFoodList": "Není připraven seznam jídel. Vytvořte si nový seznam jídel, nebo použijte výchozí seznam, který si budete moci upravit později."
+          "noFoodList": "Nemáte připrvena žádná jídla. Vytvořte si seznam jídel, nebo použijte výchozí seznam, který si budete moci upravit později."
         }
       }
     }
