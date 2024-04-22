@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 import SubmitButton from "@/components/Form/SubmitButton";
 import TextInput from "@/components/Form/TextInput";
 
-const EditFood = ({
+const FoodForm = ({
 	children,
 	translate,
 	error,
@@ -35,4 +35,4 @@ const EditFood = ({
 	);
 };
 
-export default EditFood;
+export default FoodForm;
