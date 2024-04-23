@@ -3,10 +3,11 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { ReactNode } from "react";
 
+import AutocompleteIngredients from "@/components/Form/Autocomplete/Ingredients";
 import SubmitButton from "@/components/Form/SubmitButton";
 import TextInput from "@/components/Form/TextInput";
 
-const EditFood = ({
+const FoodForm = ({
 	children,
 	translate,
 	error,
@@ -22,6 +23,7 @@ const EditFood = ({
 			<Stack spacing={4}>
 				<TextInput name="name" label="name" />
 				<TextInput name="type" label="type" />
+				<AutocompleteIngredients name="ingredients" label="ingredients" />
 				<TextInput name="content" label="content" />
 				{children}
 			</Stack>
@@ -35,4 +37,4 @@ const EditFood = ({
 	);
 };
 
-export default EditFood;
+export default FoodForm;

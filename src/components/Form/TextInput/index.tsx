@@ -4,6 +4,8 @@ import { type ReactNode } from "react";
 import { useController } from "react-hook-form";
 import { Required } from "utility-types";
 
+export { type TextFieldProps } from "@mui/material/TextField";
+
 const TextInput = ({ name, ...rest }: Required<TextFieldProps, "name">): ReactNode => {
 	const { field, fieldState } = useController({
 		name,

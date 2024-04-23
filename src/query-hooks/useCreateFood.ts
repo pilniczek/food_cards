@@ -3,20 +3,22 @@ import { useMutation, UseMutationResult, useQueryClient } from "@tanstack/react-
 
 import { useRouter } from "@/navigation";
 import supabase from "@/supabase";
-import { type Data } from "@/types/createFood";
+import { type FoodType } from "@/types/food";
+import removeIngredients from "@/utils/removeIngredients";
 
 const useCreateFood = (): UseMutationResult<
-	PostgrestSingleResponse<Data[]>,
+	PostgrestSingleResponse<FoodType[]>,
 	Error,
-	Data,
+	FoodType,
 	unknown
 > => {
 	const queryClient = useQueryClient();
 	const router = useRouter();
 
 	return useMutation({
-		mutationFn: async (formData: Data) => {
-			return await supabase.from("food").insert(formData).select();
+		mutationFn: async (formData: FoodType) => {
+			const noIngredientsFormData = removeIngredients(formData);
+			return await supabase.from("food").insert(noIngredientsFormData).select();
 		},
 		onSuccess: (data) => {
 			if (data.status !== 404) {

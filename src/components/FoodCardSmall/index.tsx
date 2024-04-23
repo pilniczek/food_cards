@@ -69,10 +69,7 @@ const FoodCardSmall = ({
 					<CircularProgress />
 				) : (
 					<>
-						<Link
-							href={`/all-food/food/edit?id=${id}&name=${name}&type=${type}&content=${content}`}
-							passHref
-						>
+						<Link href={`/all-food/food/edit?id=${id}`} passHref>
 							<Button variant="contained" size="small">
 								{edit}
 							</Button>

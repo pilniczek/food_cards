@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import FormProvider from "@/components/Form/Provider";
 import useCreateFood from "@/query-hooks/useCreateFood";
-import { type Data } from "@/types/createFood";
+import { type FoodType } from "@/types/food";
 
 import Form from "../";
 import { validationFood } from "./validation";
@@ -28,7 +28,7 @@ const CreateFood = ({ translate }: { translate: { submit: string } }) => {
 
 	const { error: supabaseError, status: supabaseStatus } = data ?? {};
 
-	const handleCreate = (formData: Data) => {
+	const handleCreate = (formData: FoodType) => {
 		mutate(formData);
 	};
 

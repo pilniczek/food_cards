@@ -14,7 +14,14 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
 						// With SSR, we usually want to set some default staleTime
 						// above 0 to avoid refetching immediately on the client
 						staleTime: 60 * 1000,
+						// onError: https://tanstack.com/query/v4/docs/framework/react/guides/query-functions#handling-and-throwing-errors
 					},
+					// mutations: {
+					// 	onError: (error: Error) => {
+					// 		// Handle errors globally here
+					// 		console.error("An error occurred:", error.message);
+					// 	},
+					// },
 				},
 			}),
 	);

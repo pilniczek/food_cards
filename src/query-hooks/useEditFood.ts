@@ -3,21 +3,27 @@ import { useMutation, UseMutationResult, useQueryClient } from "@tanstack/react-
 
 import { useRouter } from "@/navigation";
 import supabase from "@/supabase";
-import { type Data } from "@/types/editFood";
+import { type FoodType } from "@/types/food";
+import removeIngredients from "@/utils/removeIngredients";
 
 const useEditFood = (): UseMutationResult<
-	PostgrestSingleResponse<Data[]>,
+	PostgrestSingleResponse<FoodType[]>,
 	Error,
-	Data,
+	FoodType,
 	unknown
 > => {
 	const queryClient = useQueryClient();
 	const router = useRouter();
 
 	return useMutation({
-		mutationFn: async (formData: Data) => {
-			if (formData.id != undefined) {
-				return await supabase.from("food").update(formData).eq("id", formData.id).select();
+		mutationFn: async (formData: FoodType) => {
+			const noIngredientsFormData = removeIngredients(formData);
+			if (noIngredientsFormData.id != undefined) {
+				return await supabase
+					.from("food")
+					.update(noIngredientsFormData)
+					.eq("id", noIngredientsFormData.id)
+					.select();
 			} else {
 				throw new Error("useEditFood: Food id is undefined.");
 			}
